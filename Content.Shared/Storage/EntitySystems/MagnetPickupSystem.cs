@@ -116,8 +116,9 @@ public sealed partial class MagnetPickupSystem : EntitySystem
 
             var parentUid = xform.ParentUid;
 
-            if (comp.RequireActiveHand && (!_hands.TryGetActiveItem(parentUid, out var activeItem) || activeItem != uid))
-                continue;
+            // Aurora's Song - Disable this for now, people are used to the old method
+            // if (comp.RequireActiveHand && (!_hands.TryGetActiveItem(parentUid, out var activeItem) || activeItem != uid))
+            //     continue;
 
             // Frontier: combine DeltaV/White Dream's magnet toggle with old system
             if (comp.MagnetCanBeEnabled)
@@ -132,14 +133,16 @@ public sealed partial class MagnetPickupSystem : EntitySystem
             }
             // End Frontier
 
-            if (comp.SlotFlags != null)
-            {
-                if (!_inventory.TryGetContainingSlot((uid, xform, meta), out var slotDef))
-                    continue;
-
-                if ((slotDef.SlotFlags & comp.SlotFlags) == 0x0)
-                    continue;
-            }
+            // Aurora's Song Start - Disable this for now, people are used to the old method
+            // if (comp.SlotFlags != null)
+            // {
+            //     if (!_inventory.TryGetContainingSlot((uid, xform, meta), out var slotDef))
+            //         continue;
+            //
+            //     if ((slotDef.SlotFlags & comp.SlotFlags) == 0x0)
+            //         continue;
+            // }
+            // Aurora's Song End
 
             // Frontier: run conservative space estimations, cut down on space checks
             var slotCount = _storage.GetCumulativeItemAreas((uid, storage)); // Frontier
