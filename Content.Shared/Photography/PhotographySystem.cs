@@ -69,7 +69,6 @@ public sealed partial class PhotographySystem : EntitySystem
 
         FormattedMessage? description = null;
         string? nameText = null;
-        CustomExamineComponent? customExamineComponent = null; // Aurora's Song
         if (target != null)
         {
             description = _examine.GetExamineText(target.Value, camera); // Aurora's Song - user>camera
@@ -81,7 +80,6 @@ public sealed partial class PhotographySystem : EntitySystem
                 description = null;
                 nameText = Loc.GetString("photograph-name-text-photograph");
             }
-            customExamineComponent = CompOrNull<CustomExamineComponent>(target.Value); // Aurora's Song - We want to copy this to the photograph
         }
 
         foreach (var prototype in tableResult)
@@ -95,9 +93,9 @@ public sealed partial class PhotographySystem : EntitySystem
 
             _hands.PickupOrDrop(user, spawned, dropNear: true);
 
-            // Aurora's Song Start - Copy onto the photograph
-            if (customExamineComponent != null && target is { } targetReal)
-                CopyComp(targetReal, spawned, customExamineComponent);
+            // Aurora's Song Start - Copy custom examine onto the photograph
+            if (TryComp<CustomExamineComponent>(target, out var customExamineComponent))
+                CopyComp(target.Value, spawned, customExamineComponent);
             // Aurora's Song End
         }
     }
