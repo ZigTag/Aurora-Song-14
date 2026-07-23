@@ -1,3 +1,4 @@
+using Content.Shared._Floof.Examine; // Aurora's Song
 using Content.Shared.EntityTable;
 using Content.Shared.Examine;
 using Content.Shared.Flash;
@@ -68,9 +69,10 @@ public sealed partial class PhotographySystem : EntitySystem
 
         FormattedMessage? description = null;
         string? nameText = null;
+        CustomExamineComponent? customExamineComponent = null; // Aurora's Song
         if (target != null)
         {
-            description = _examine.GetExamineText(target.Value, user);
+            description = _examine.GetExamineText(target.Value, camera); // Aurora's Song - user>camera
             // Get the full string now instead of indexing it later because we need the entity to know if it uses a proper noun or not.
             nameText = Loc.GetString("photograph-name-text", ("entity", Identity.Entity(target.Value, EntityManager)));
             // We don't want photographs to contain the descriptions of other photographs, because that makes entities with, in theory, infinite descriptions.
@@ -79,6 +81,7 @@ public sealed partial class PhotographySystem : EntitySystem
                 description = null;
                 nameText = Loc.GetString("photograph-name-text-photograph");
             }
+            customExamineComponent = CompOrNull<CustomExamineComponent>(target.Value); // Aurora's Song - We want to copy this to the photograph
         }
 
         foreach (var prototype in tableResult)
@@ -91,6 +94,11 @@ public sealed partial class PhotographySystem : EntitySystem
             Dirty(spawned, photoComp);
 
             _hands.PickupOrDrop(user, spawned, dropNear: true);
+
+            // Aurora's Song Start - Copy onto the photograph
+            if (customExamineComponent != null && target is { } targetReal)
+                CopyComp(targetReal, spawned, customExamineComponent);
+            // Aurora's Song End
         }
     }
 }
