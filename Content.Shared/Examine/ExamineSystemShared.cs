@@ -4,7 +4,7 @@ using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Photography;
+using Content.Shared.Photography; // Aurora's Song
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
