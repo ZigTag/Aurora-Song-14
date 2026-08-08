@@ -366,13 +366,11 @@
   name: clockwork shield
   parent: BaseRepairableShield
   id: ClockworkShield
-  description: A round, heavy brass shield styled after a set of cogs used by Ratvarian zealots. # Aurora's Song
+  description: Ratvar oyrffrf lbh jvgu uvf cebgrpgvba.
   components:
     - type: Sprite
-      sprite: _AS/Objects/Weapons/Melee/clockwork_shield.rsi # Aurora's Song
       state: ratvarian-icon
     - type: Item
-      sprite: _AS/Objects/Weapons/Melee/clockwork_shield.rsi # Aurora's Song
       heldPrefix: ratvarian
     - type: Blocking
       passiveBlockModifier:
