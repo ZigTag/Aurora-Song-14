@@ -102,6 +102,7 @@
     #   range: 500
     - type: TriggerOnMobstateChange
       mobState:
+      - Alive # Aurora's Song
       - Critical
       - Dead
     - type: RattleOnTrigger
@@ -378,6 +379,7 @@
         - MobState # admeme implanting a chair with rattle implant needs to give the chair mobstate so it can die first
     - type: TriggerOnMobstateChange
       mobState:
+      - Alive # Aurora's Song
       - Critical
       - Dead
     - type: RattleOnTrigger

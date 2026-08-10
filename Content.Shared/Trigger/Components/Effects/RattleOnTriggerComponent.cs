@@ -25,7 +25,8 @@ public sealed partial class RattleOnTriggerComponent : BaseXOnTriggerComponent
     public Dictionary<MobState, LocId> Messages = new()
     {
         {MobState.Critical, "deathrattle-implant-critical-message"},
-        {MobState.Dead, "deathrattle-implant-dead-message"} // Aurora's Song: Reverted these to the older, more informative locale
+        {MobState.Dead, "deathrattle-implant-dead-message"}, // Aurora's Song: Reverted these to the older, more informative locale
+        {MobState.Alive, "deathrattle-implant-revived-message"} // Aurora's Song - Add revival messages too
     };
 
     // Aurora's Song.

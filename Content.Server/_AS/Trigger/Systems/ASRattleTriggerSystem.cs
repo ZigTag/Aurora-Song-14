@@ -31,10 +31,8 @@ public sealed partial class ASRattleTriggerSystem : XOnTriggerSystem<RattleOnTri
             return;
 
         // Coyote
-        if (!TryComp<MobStateComponent>(implanted.ImplantedEntity, out var mobstate)
-            || mobstate.CurrentState == MobState.Alive)
+        if (!TryComp<MobStateComponent>(implanted.ImplantedEntity, out var mobstate))
             return;
-
 
         // Gets location of the implant
         var ownerXform = Transform(target);

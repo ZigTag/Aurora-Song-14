@@ -43,6 +43,7 @@
 #      range: 500
     - type: TriggerOnMobstateChange
       mobState:
+      - Alive
       - Critical
       - Dead
     - type: RattleOnTrigger
@@ -74,6 +75,7 @@
       range: 500
     - type: TriggerOnMobstateChange
       mobState:
+      - Alive
       - Critical
       - Dead
     - type: RattleOnTrigger
